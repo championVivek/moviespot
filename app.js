@@ -1,11 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const path = require('path')
+const path = require("path");
 const cors = require("cors");
-require('dotenv').config()
+require("dotenv").config();
 
 const app = express();
-
 
 const PopularMovies = require("./routes/FetchPopularMovies");
 const TopRatedMovies = require("./routes/FetchTopRatedMovies");
@@ -21,8 +20,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, 'build')));
-
 app.use(PopularMovies);
 app.use(TopRatedMovies);
 app.use(NowPlayingMovies);
@@ -32,9 +29,12 @@ app.use(getAiringTodayTvShow);
 app.use(getOnTheAirTodayTvshow);
 app.use(getTopRatedTvShow);
 
-let PORT = process.env.PORT || 5555
+let PORT = process.env.PORT || 5555;
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "build")));
+}
 
 app.listen(PORT, () => {
   console.log(`Connected to ${PORT}`);
 });
-

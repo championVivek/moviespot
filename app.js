@@ -20,6 +20,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(express.static(path.join(__dirname, "build")));
+
 app.use(PopularMovies);
 app.use(TopRatedMovies);
 app.use(NowPlayingMovies);
@@ -30,8 +32,6 @@ app.use(getOnTheAirTodayTvshow);
 app.use(getTopRatedTvShow);
 
 let PORT = process.env.PORT || 5555;
-app.use(express.static(path.join(__dirname, "build")));
-app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, "build", "index.html")));
 
 
 app.listen(PORT, () => {

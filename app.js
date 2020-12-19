@@ -30,10 +30,9 @@ app.use(getOnTheAirTodayTvshow);
 app.use(getTopRatedTvShow);
 
 let PORT = process.env.PORT || 5555;
+app.use(express.static(path.join(__dirname, "build")));
+app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, "build", "index.html")));
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "build")));
-}
 
 app.listen(PORT, () => {
   console.log(`Connected to ${PORT}`);

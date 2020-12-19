@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "movie search",
   "main": "app.js",
+  "engines": {
+    "node": "14.15.1",
+    "npm" : "6.14.10"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "npm install",
     "start": "node app.js",
-    "build" : "npm run build",
-    "install-client": "npm install",
-    "heroku-postbuild": "npm run install-client && npm run build",
     "client": "npm start"
   },
   "author": "",
@@ -23,8 +25,5 @@
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.6",
     "path": "^0.12.7"
-  },
-  "engines": {
-    "node": "14.15.1"
   }
 }

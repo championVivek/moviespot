@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require('path')
 const cors = require("cors");
 require('dotenv').config()
 
@@ -20,7 +21,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-pp.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(PopularMovies);
 app.use(TopRatedMovies);

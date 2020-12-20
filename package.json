@@ -9,9 +9,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm install",
     "start": "node app.js",
-    "client": "npm start"
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",

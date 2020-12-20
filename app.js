@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
+const helmet = require("helmet");
+const compression = require("compression");
 require("dotenv").config();
 
 const app = express();
@@ -16,7 +18,8 @@ const getOnTheAirTodayTvshow = require("./routes/tvShows/getonTheAirTvShow");
 const getTopRatedTvShow = require("./routes/tvShows/getTopRated");
 
 app.use(cors());
-
+app.use(helmet());
+app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -32,7 +35,6 @@ app.use(getOnTheAirTodayTvshow);
 app.use(getTopRatedTvShow);
 
 let PORT = process.env.PORT || 5555;
-
 
 app.listen(PORT, () => {
   console.log(`Connected to ${PORT}`);

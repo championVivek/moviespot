@@ -31,7 +31,7 @@ app.use(getAiringTodayTvShow);
 app.use(getOnTheAirTodayTvshow);
 app.use(getTopRatedTvShow);
 
-var PORT = process.env.PORT || 5555;
+let PORT = process.env.PORT || 5555;
 
 
 app.listen(PORT, () => {
